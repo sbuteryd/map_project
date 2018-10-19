@@ -5,9 +5,8 @@ import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 class MapCreate extends Component{
     render(){
         return(
-            <div>
+            <div id='map'>
                 <Map google={this.props.google}
-                     style={{bottom:'0px',height: '100%',left: '362px',position: 'absolute',right: '0px',}}
                      initialCenter={{lat:24.479833,lng:118.089425}}
                      zoom={14}>
                     <Marker
