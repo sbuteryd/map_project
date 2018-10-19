@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import './App.css';
-import  SimpleMap from './map'
+import MapCreate from'./Map'
 
 class App extends Component {
   render() {
-    return (
+      return(
         <div>
-            <SimpleMap/>
+            <MapCreate />
         </div>
-    );
+    )
   }
 }
 
