@@ -7,6 +7,7 @@ class MapCreate extends Component{
         return(
             <div>
                 <Map google={this.props.google}
+                     style={{bottom:'0px',height: '100%',left: '362px',position: 'absolute',right: '0px',}}
                      initialCenter={{lat:24.479833,lng:118.089425}}
                      zoom={14}>
                     <Marker
