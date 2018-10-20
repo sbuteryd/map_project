@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import './App.css';
-import MapCreate from'./Map'
+import CreateMap from'./Map'
 
 class App extends Component {
   render() {
       return(
         <div>
-            <MapCreate />
+            <CreateMap />
         </div>
     )
   }
