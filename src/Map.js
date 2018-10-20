@@ -10,10 +10,11 @@ class CreateMap extends Component{
         window.initMap = this.initMap
     }
     initMap = () => {
-        var map = new  window.google.maps.Map(document.getElementById('map'), {
+        const map = new  window.google.maps.Map(document.getElementById('map'), {
             center: {lat: 40.7413549, lng: -73.9980244},
             zoom: 13
         })
+
     }
     render(){
         return(
