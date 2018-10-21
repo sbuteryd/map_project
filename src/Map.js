@@ -52,6 +52,9 @@ class CreateMap extends Component{
         }))
     }
     render(){
+        if(this.state.query){
+
+        }
         return(
             <div>
                 <input type="text"
@@ -60,7 +63,7 @@ class CreateMap extends Component{
                 />
                 <ul>
                     {this.state.getDate.map((name)=>(
-                        <li>{name.venue.name}</li>
+                        <li key={name.venue.id}>{name.venue.name}</li>
                     ))}
                 </ul>
                 <div id='map'></div>
