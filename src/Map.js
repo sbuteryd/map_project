@@ -52,8 +52,12 @@ class CreateMap extends Component{
         }))
     }
     render(){
+        let filterInput;
         if(this.state.query){
-
+            const match = RegExp(escapeRegExp(this.state.query),'i')
+            filterInput = this.state.getDate.filter((content)=>  match.test(content.venue.name))
+        }else {
+            filterInput = this.state.getDate
         }
         return(
             <div>
@@ -62,7 +66,7 @@ class CreateMap extends Component{
                        onChange={(event)=> this.searchFor(event.target.value)}
                 />
                 <ul>
-                    {this.state.getDate.map((name)=>(
+                    {filterInput.map((name)=>(
                         <li key={name.venue.id}>{name.venue.name}</li>
                     ))}
                 </ul>
