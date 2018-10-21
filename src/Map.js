@@ -1,6 +1,6 @@
 import React ,{Component}from 'react'
 import ReactDom from 'react-dom'
-
+import escapeRegExp from 'escape-string-regexp'
 class CreateMap extends Component{
     state = {
         getDate:[],
