@@ -3,7 +3,8 @@ import ReactDom from 'react-dom'
 
 class CreateMap extends Component{
     state = {
-        getDate:[]
+        getDate:[],
+        query:''
     }
     componentDidMount(){
         // this.displayMap()
@@ -19,7 +20,7 @@ class CreateMap extends Component{
             this.setState({
                 getDate:date.response.groups[0].items
             },this.displayMap())
-        ));
+        ))
     }
     displayMap = () => {
         loadScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyBqeCAur3WuwLz9vaZyfuVA4WzfqSFjmiM&v=3&callback=initMap")
@@ -45,9 +46,23 @@ class CreateMap extends Component{
             })
         })
     }
+    searchFor = (query) =>{
+        this.setState(({
+            query
+        }))
+    }
     render(){
         return(
             <div>
+                <input type="text"
+                       value={this.state.query}
+                       onChange={(event)=> this.searchFor(event.target.value)}
+                />
+                <ul>
+                    {this.state.getDate.map((name)=>(
+                        <li>{name.venue.name}</li>
+                    ))}
+                </ul>
                 <div id='map'></div>
             </div>
 
