@@ -3,12 +3,26 @@ import ReactDom from 'react-dom'
 
 class CreateMap extends Component{
     componentDidMount(){
-        this.displayMap()
+        // this.displayMap()
+        this.getApidate()
+    }
+
+    getApidate = () =>{
+        fetch('https://api.foursquare.com/v2/venues/explore?client_id=PMHC2WA1VCBHVYOPPSJ0QSBYTLRF4PNJ04OWVWV0PZJ0QFIR&client_secret=CULSZZ44YAEBOWBFGPB4BF5ISRXXSNYR0EE3JV3CNE2ZWHV0&v=20182507&limit=10&ll=40.7413549,-73.9980244&query=food')
+            .then(function(response) {
+                // Code for handling API response
+                return response.json()
+            }).then((date) => (
+            this.setState({
+                venues:date.response.groups[0].items
+            },this.displayMap())
+        ));
     }
     displayMap = () => {
         loadScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyBqeCAur3WuwLz9vaZyfuVA4WzfqSFjmiM&v=3&callback=initMap")
         window.initMap = this.initMap
     }
+
     initMap = () => {
         const map = new  window.google.maps.Map(document.getElementById('map'), {
             center: {lat: 40.7413549, lng: -73.9980244},
