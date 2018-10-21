@@ -2,6 +2,9 @@ import React ,{Component}from 'react'
 import ReactDom from 'react-dom'
 
 class CreateMap extends Component{
+    state = {
+        getDate:[]
+    }
     componentDidMount(){
         // this.displayMap()
         this.getApidate()
@@ -14,7 +17,7 @@ class CreateMap extends Component{
                 return response.json()
             }).then((date) => (
             this.setState({
-                venues:date.response.groups[0].items
+                getDate:date.response.groups[0].items
             },this.displayMap())
         ));
     }
@@ -28,7 +31,19 @@ class CreateMap extends Component{
             center: {lat: 40.7413549, lng: -73.9980244},
             zoom: 13
         })
-
+        // console.log(content.venue.location.lat)
+        const inforwindow = new window.google.maps.InfoWindow()
+        this.state.getDate.map((content) =>{
+            let markerContent = `${content.venue.name}`
+            let marker = new window.google.maps.Marker({
+                map:map,
+                position:{lat:content.venue.location.lat,lng:content.venue.location.lng}
+            })
+            marker.addListener('click',function () {
+                inforwindow.setContent(markerContent);
+                inforwindow.open(map,marker)
+            })
+        })
     }
     render(){
         return(
