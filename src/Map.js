@@ -3,13 +3,8 @@ import ReactDom from 'react-dom'
 import escapeRegExp from 'escape-string-regexp'
 class CreateMap extends Component{
     state = {
-        getDate:[],
-        query:'',
-        markerList:[],
-        map:''
     }
     componentDidMount(){
-        // this.displayMap()
         this.getApidate()
     }
 
@@ -30,84 +25,25 @@ class CreateMap extends Component{
     };
 
     initMap = () => {
-        // let markerList=[];
          let getDatelist = this.state.getDate;
-
         const map = new  window.google.maps.Map(document.getElementById('map'), {
             center: {lat: 40.7413549, lng: -73.9980244},
             zoom: 13
         });
-        let inforwindow = new window.google.maps.InfoWindow();
-        console.log(this.state.getDate.length);
-        for(let i =0;i<getDatelist.length;i++){
-            // let markerContent = `${getDatelist[i].venue.name}`;
-            let marker = new window.google.maps.Marker({
-                title:getDatelist[i].venue.name,
-                map:map,
-                position:{lat:getDatelist[i].venue.location.lat,lng:getDatelist[i].venue.location.lng}
-            });
-            this.state.markerList.push(marker);
-            marker.addListener('click',function () {
-                if(inforwindow.marker !== marker) {
-                    inforwindow.marker = marker;
-                    inforwindow.setContent("<div>" + marker.title + "</div>");
-                    inforwindow.open(map,marker)
-                }
-            })
 
-        }
-
-        this.setState({
-            map
-        })
     };
-
-    searchFor = (query) =>{
-        this.setState(({
-            query
-        }))
-    };
-
-    // displayMarker = ()=>{
-    //     this.setState((state)=>({
-    //         markerList:this.state.markerList.map((some) => some.setMap(this.state.map))
-    //     }))
-    //
-    // }
-
-
-
     render(){
-        let filterInput;
-        let serList;
-        if(this.state.query){
-            // let getMarkerList =[]
-            const match = RegExp(escapeRegExp(this.state.query),'i')
-            filterInput = this.state.getDate.filter((content) =>  match.test(content.venue.name))
-            let newList = this.state.markerList.filter((some)=>  match.test(some.title))
 
-            // this.displayMarker()
-        }else {
-            filterInput = this.state.getDate
-        }
         return(
             <div>
                 <input type="text"
-                       value={this.state.query}
-                       onChange={(event)=> this.searchFor(event.target.value)}
                 />
-                <ul id='name_list'>
-                    {filterInput.map((name)=>(
-                        <li key={name.venue.id}>{name.venue.name}</li>
-                    ))}
-                </ul>
                 <div id='map'></div>
             </div>
 
         )
     }
 }
-
 
 function loadScript(url) {
     var index  = window.document.getElementsByTagName("script")[0]
