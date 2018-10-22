@@ -65,7 +65,7 @@ class CreateMap extends Component{
         let useChose;
         let paperMaker;
         if(query){
-            const match = RegExp(escapeRegExp(this.state.query),'i')
+            const match = new RegExp(escapeRegExp(query),'i')
             useChose = this.state.original.filter((chose)=> match.test(chose.venue.name))
             this.setState({
                 original:useChose
