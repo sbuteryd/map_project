@@ -55,10 +55,13 @@ class CreateMap extends Component{
         })
 
     };
+    //4 设置 list and 搜索 设置每个地图显示
     changeUi = (query) =>{
         this.setState({
             query
         })
+        this.state.markersList.map((marker)=> marker.setVisible(true))
+
     }
     render(){
         console.log(this.state.query)
