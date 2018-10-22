@@ -5,7 +5,8 @@ class CreateMap extends Component{
     state = {
         original:[],
         getDate:[],
-        markersList:[]
+        markersList:[],
+        query:''
     }
     componentDidMount(){
         this.getApidate()
@@ -54,12 +55,18 @@ class CreateMap extends Component{
         })
 
     };
+    changeUi = (query) =>{
+        console.log(query)
+    }
     render(){
-
         return(
             <div>
                 <input type="text"
+                       value={this.state.query}
+                       onChange={(event)=> this.changeUi(event.target.value)}
                 />
+                {this.state.original.map((some)=>
+                    <li key={some.venue.id}>{some.venue.name}</li>)}
                 <div id='map'></div>
             </div>
 
