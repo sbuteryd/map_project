@@ -3,6 +3,9 @@ import ReactDom from 'react-dom'
 import escapeRegExp from 'escape-string-regexp'
 class CreateMap extends Component{
     state = {
+        original:[],
+        getDate:[],
+        markersList:[]
     }
     componentDidMount(){
         this.getApidate()
@@ -30,6 +33,19 @@ class CreateMap extends Component{
             center: {lat: 40.7413549, lng: -73.9980244},
             zoom: 13
         });
+
+        let inforwindow = new window.google.maps.InfoWindow()
+        //1 设置marker,在地图上显示5个marker
+        // console.log(this.state.getDate[0].venue.name)
+        this.state.getDate.map((date) =>{
+            let marker = new window.google.maps.Marker({
+                map:map,
+                position:{lat:date.venue.location.lat,lng:date.venue.location.lng},
+                title:date.venue.name
+            })
+            this.state.markersList.push(marker)
+        })
+        console.log(this.state.markersList)
 
     };
     render(){
