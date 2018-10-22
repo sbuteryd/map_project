@@ -18,6 +18,7 @@ class CreateMap extends Component{
                 return response.json()
             }).then((date) => (
             this.setState({
+                original:date.response.groups[0].items,
                 getDate:date.response.groups[0].items
             },this.displayMap())
         ))
@@ -44,6 +45,13 @@ class CreateMap extends Component{
                 title:date.venue.name
             })
             this.state.markersList.push(marker)
+            //2 添加点击显示地址
+            let constent = '<div>'+"crossStreet  "+date.venue.location.crossStreet+'</div>'
+            marker.addListener('click',function () {
+                inforwindow.setContent(constent)
+                inforwindow.open(map,marker)
+            })
+
         })
         console.log(this.state.markersList)
 
