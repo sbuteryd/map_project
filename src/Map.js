@@ -56,9 +56,12 @@ class CreateMap extends Component{
 
     };
     changeUi = (query) =>{
-        console.log(query)
+        this.setState({
+            query
+        })
     }
     render(){
+        console.log(this.state.query)
         return(
             <div>
                 <input type="text"
