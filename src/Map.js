@@ -44,16 +44,14 @@ class CreateMap extends Component{
                 position:{lat:date.venue.location.lat,lng:date.venue.location.lng},
                 title:date.venue.name
             })
-            this.state.markersList.push(marker)
             //2 添加点击显示地址
             let constent = '<div>'+"crossStreet  "+date.venue.location.crossStreet+'</div>'
             marker.addListener('click',function () {
                 inforwindow.setContent(constent)
                 inforwindow.open(map,marker)
             })
-
+            this.state.markersList.push(marker)
         })
-        console.log(this.state.markersList)
 
     };
     render(){
