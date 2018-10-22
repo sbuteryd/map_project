@@ -6,7 +6,8 @@ class CreateMap extends Component{
         original:[],
         getDate:[],
         markersList:[],
-        query:''
+        query:'',
+        usechose:[]
     }
     componentDidMount(){
         this.getApidate()
@@ -61,6 +62,27 @@ class CreateMap extends Component{
             query
         })
         this.state.markersList.map((marker)=> marker.setVisible(true))
+        let useChose;
+        let paperMaker;
+        if(query){
+            const match = RegExp(escapeRegExp(this.state.query),'i')
+            useChose = this.state.original.filter((chose)=> match.test(chose.venue.name))
+            this.setState({
+                original:useChose
+            })
+            paperMaker = this.state.markersList.filter((marker) =>
+                useChose.every((chose)=> chose.venue.name !== marker.title)
+            )
+            paperMaker.forEach(marker => marker.setVisible(false))
+            this.setState({
+                usechose:paperMaker
+            })
+        }else{
+            this.setState({
+                original:this.state.getDate
+            })
+            this.state.markersList.forEach( marker => marker.setVisible(true))
+        }
 
     }
     render(){
