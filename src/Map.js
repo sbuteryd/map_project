@@ -88,14 +88,16 @@ class CreateMap extends Component{
     render(){
         console.log(this.state.query)
         return(
-            <div>
-                <input type="text"
+            <div className='container box'>
+                <div id='map' className='box'></div>
+                <input className= 'box' type="text"
                        value={this.state.query}
                        onChange={(event)=> this.changeUi(event.target.value)}
                 />
-                {this.state.original.map((some)=>
-                    <li key={some.venue.id}>{some.venue.name}</li>)}
-                <div id='map'></div>
+                <ul className='list-name box' >
+                    {this.state.original.map((some)=>
+                        <li className='name-list' key={some.venue.id}>{some.venue.name}</li>)}
+                </ul>
             </div>
 
         )
