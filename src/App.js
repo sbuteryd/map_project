@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './App.css';
 import CreateMap from'./Map'
 
 class App extends Component {
