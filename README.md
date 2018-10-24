@@ -30,7 +30,7 @@ npm run build
 
 serve -s build
 注，如果没有安装 serve 包，记得通过 npm install -g serve 命令安装
-然后就可以打开命令行给出的地址（比如 http://localhost:5000/）启动啦，就可以看到已经缓存我们需要的资源，参考如下截图：
+然后就可以打开命令行给出的地址 比如 http://localhost:5000/ 启动啦，就可以看到已经缓存我们需要的资源
 
 ## Screenshot
 ![Screenshot](./src/readmepicture/mapPicture.png "picture for map")
