@@ -17,13 +17,8 @@ npm install
 npm start
 ```
 
-To run the project in the **build mode**, follow the instructions below.<br>
-Run:
-```
-npm run build
-```
 ## Credits & Helpful Links
 * how to use fetch api to get date [fetch api information](https://developer.foursquare.com/docs/api/venues/explore)
 
 ## Screenshot
-![Screenshot](./udacitymap/src/readmepicture/mapPicture.png "picture for map")
+![Screenshot](./src/readmepicture/mapPicture.png "picture for map")
