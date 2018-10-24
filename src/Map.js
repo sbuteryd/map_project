@@ -102,7 +102,19 @@ class CreateMap extends Component{
                 />
                 <ul aria-label="Preset list" className='list-name box' >
                     {this.state.original.map((some)=>
-                        <li   aria-label='Search name' className='name-list '    key={some.venue.id}><button>{some.venue.name}</button></li>)}
+                        <li  aria-label='Search name' className='name-list  '    key={some.venue.id}><button
+                            className={some.venue.name}
+                            onKeyPress={
+                                evt => {
+                                    if (evt.key == ' ' || evt.key == 'Enter') {
+                                        let selectedMarker = this.state.markersList.find(marker => marker.title == some.venue.name)
+                                        // 通过此方法打开 infowindow
+                                        window.google.maps.event.trigger(selectedMarker, 'click')
+                                    }
+                                }
+                            }
+
+                        >{some.venue.name}</button></li>)}
                 </ul>
             </div>
 
