@@ -117,6 +117,9 @@ function loadScript(url) {
     script.async = true
     script.defer = true
     index.parentNode.insertBefore(script, index)
+    script.onerror = function() {
+        alert("the map is Error plase contact us ");
+    };
 }
 
 export default CreateMap
