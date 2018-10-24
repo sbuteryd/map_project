@@ -25,6 +25,7 @@ class CreateMap extends Component{
             },this.displayMap())
         ))
             .catch(function (error) {
+                alert('Cant not to get map plase content us')
             console.log('Cant not to get map plase content us')
         })
     };
