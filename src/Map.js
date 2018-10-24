@@ -102,7 +102,7 @@ class CreateMap extends Component{
                 />
                 <ul aria-label="Preset list" className='list-name box' >
                     {this.state.original.map((some)=>
-                        <li aria-label='Search name' className='name-list' key={some.venue.id}>{some.venue.name}</li>)}
+                        <li   aria-label='Search name' className='name-list '    key={some.venue.id}><button>{some.venue.name}</button></li>)}
                 </ul>
             </div>
 
