@@ -48,13 +48,15 @@ class CreateMap extends Component{
             let marker = new window.google.maps.Marker({
                 map:map,
                 position:{lat:date.venue.location.lat,lng:date.venue.location.lng},
-                title:date.venue.name
+                title:date.venue.name,
             })
             //2 添加点击显示地址
             let constent = '<div>'+"crossStreet  "+date.venue.location.crossStreet+'</div>'
             marker.addListener('click',function () {
                 inforwindow.setContent(constent)
                 inforwindow.open(map,marker)
+                this.setAnimation(window.google.maps.Animation.BOUNCE);
+                setTimeout(function(){ marker.setAnimation(null) }, 300)
             })
             this.state.markersList.push(marker)
         })
