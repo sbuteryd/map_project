@@ -23,7 +23,9 @@ class CreateMap extends Component{
                 original:date.response.groups[0].items,
                 getDate:date.response.groups[0].items
             },this.displayMap())
-        ))
+        )).catch(function (error) {
+            console.log('Cant not to get map plase content us')
+        })
     };
     displayMap = () => {
         loadScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyBqeCAur3WuwLz9vaZyfuVA4WzfqSFjmiM&v=3&callback=initMap")
