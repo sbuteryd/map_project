@@ -89,14 +89,14 @@ class CreateMap extends Component{
         console.log(this.state.query)
         return(
             <div className='container box'>
-                <div id='map' className='box'></div>
-                <input className= 'box' type="text"
+                <div aria-label ='google map' id='map' className='box'></div>
+                <input aria-label ='search bar' className= 'box' type="text"
                        value={this.state.query}
                        onChange={(event)=> this.changeUi(event.target.value)}
                 />
-                <ul className='list-name box' >
+                <ul aria-label="Preset list" className='list-name box' >
                     {this.state.original.map((some)=>
-                        <li className='name-list' key={some.venue.id}>{some.venue.name}</li>)}
+                        <li aria-label='Search name' className='name-list' key={some.venue.id}>{some.venue.name}</li>)}
                 </ul>
             </div>
 
