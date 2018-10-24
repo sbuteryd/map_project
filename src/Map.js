@@ -23,7 +23,8 @@ class CreateMap extends Component{
                 original:date.response.groups[0].items,
                 getDate:date.response.groups[0].items
             },this.displayMap())
-        )).catch(function (error) {
+        ))
+            .catch(function (error) {
             console.log('Cant not to get map plase content us')
         })
     };
